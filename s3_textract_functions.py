@@ -1,7 +1,6 @@
 import boto3
 import time
 
-
 sleep_time = 5
 
 def startJob(s3BucketName, objectName):
@@ -17,7 +16,6 @@ def startJob(s3BucketName, objectName):
     )
     return response["JobId"]
 
-
 def isJobComplete(jobId):
     time.sleep(sleep_time)
     client = boto3.client('textract')
@@ -30,9 +28,7 @@ def isJobComplete(jobId):
         response = client.get_document_text_detection(JobId=jobId)
         status = response["JobStatus"]
         print("Job status: {}".format(status))
-
     return status
-
 
 def getJobResults(jobId):
     isJobComplete(jobId)
@@ -40,5 +36,4 @@ def getJobResults(jobId):
     client = boto3.client('textract')
     response = client.get_document_text_detection(JobId=jobId)
     status = response["JobStatus"]
-
     return response
