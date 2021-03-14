@@ -1,7 +1,5 @@
 from s3_textract_functions import *
-
 import boto3
-from pprint import pprint
 
 def datachunk(x):
     """Comprehend accepts textfile upto 5000 bytes only. More than that we need to chunk it into a list of textfiles"""
